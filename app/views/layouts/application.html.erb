@@ -32,6 +32,10 @@
           </div><!--/.nav-collapse -->
           <!-- Login Logout -->
           <div class="nav-collapse" id="user_nav">
+              <ul class="nav">
+                <li><%= link_to "param kimde?", loans_path %></li>
+                <li><%= link_to "arkadaslarim", borrowers_path %></li>
+              </ul>
             <% if user_signed_in? %>
               <%= current_user.email %> olarak giriş yaptınız
               <%= link_to "Çıkış Yap", destroy_user_session_path, :method => :delete %>

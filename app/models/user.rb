@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  #associations
+  has_many :loans
+  has_many :borrowers
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

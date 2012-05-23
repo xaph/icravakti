@@ -1,4 +1,8 @@
 Icravakti::Application.routes.draw do
+  resources :borrowers
+
+  resources :loans
+
   get "user/show"
 
   get "user/edit"

@@ -1,0 +1,29 @@
+<h1>Arkadaslarim</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Facebook name</th>
+    <th>Twitter name</th>
+    <th>Info</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @borrowers.each do |borrower| %>
+  <tr>
+    <td><%= borrower.name %></td>
+    <td><%= borrower.facebook_name %></td>
+    <td><%= borrower.twitter_name %></td>
+    <td><%= borrower.info %></td>
+    <td><%= link_to 'Show', borrower %></td>
+    <td><%= link_to 'Edit', edit_borrower_path(borrower) %></td>
+    <td><%= link_to 'Destroy', borrower, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Borrower', new_borrower_path %>

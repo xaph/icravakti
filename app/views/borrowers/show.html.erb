@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @borrower.name %>
+</p>
+
+<p>
+  <b>Facebook name:</b>
+  <%= @borrower.facebook_name %>
+</p>
+
+<p>
+  <b>Twitter name:</b>
+  <%= @borrower.twitter_name %>
+</p>
+
+<p>
+  <b>Info:</b>
+  <%= @borrower.info %>
+</p>
+
+<%= link_to 'Edit', edit_borrower_path(@borrower) %> |
+<%= link_to 'Back', borrowers_path %>
