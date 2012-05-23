@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  loan_id: 1
+  payment_value: 1
+  paid: false
+  payment_date: 2012-05-23
+
+two:
+  loan_id: 1
+  payment_value: 1
+  paid: false
+  payment_date: 2012-05-23

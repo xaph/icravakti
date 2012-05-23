@@ -1,0 +1,7 @@
+<h2>Giriş yap</h2>
+
+uygulamaya facebook ve twitter ile bağlanıp, arkadaşlarının verdiği borçları takip edebilirsin
+<br>
+
+<%= link_to image_tag("facebook-login.png"), user_omniauth_authorize_path(:facebook) %>
+<%= link_to image_tag("twitter-login.png"), user_omniauth_authorize_path(:twitter) %>

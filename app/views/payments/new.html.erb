@@ -1,0 +1,8 @@
+<h1>Yeni odeme</h1>
+<p>Borclu kisi: <%= @loan.borrower.name %> </p>
+<p>Toplam Borcu: <%= @loan.value %> </p>
+<p>Kalan Borcu: <%= @loan.remaining %> </p>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', loan_payments_path(@loan) %>

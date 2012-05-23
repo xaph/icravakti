@@ -13,7 +13,7 @@
 <% @loans.each do |loan| %>
   <tr>
     <td><%= loan.borrower.name %></td>
-    <td><%= loan.value %></td>
+    <td><%= loan.value %>(<%= loan.paid_value %> lirasini odedi)</td>
     <td><%= loan.description %></td>
     <td><%= link_to 'Show', loan %></td>
     <td><%= link_to 'Edit', edit_loan_path(loan) %></td>

@@ -1,7 +1,9 @@
 Icravakti::Application.routes.draw do
   resources :borrowers
 
-  resources :loans
+  resources :loans do
+    resources :payments
+  end
 
   get "user/show"
 

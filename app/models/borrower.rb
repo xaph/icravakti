@@ -3,4 +3,6 @@ class Borrower < ActiveRecord::Base
   has_many :loans
   belongs_to :user
   attr_accessible :facebook_name, :info, :name, :twitter_name
+
+  validates_presence_of :name
 end

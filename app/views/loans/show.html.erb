@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @loan.user_id %>
-</p>
-
-<p>
   <b>Borrower:</b>
-  <%= @loan.borrower_id %>
+  <%= @loan.borrower.name %>
 </p>
 
 <p>
@@ -25,6 +20,11 @@
   <%= @loan.paid_value %>
 </p>
 
-
 <%= link_to 'Edit', edit_loan_path(@loan) %> |
 <%= link_to 'Back', loans_path %>
+
+<br><br>
+
+<h4> payments</h4>
+<%= render @loan.payments %>
+<%= link_to 'yeni bir odeme yap', new_loan_payment_path(@loan) %>

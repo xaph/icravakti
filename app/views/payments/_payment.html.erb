@@ -1,0 +1,7 @@
+<%= div_for payment do %>
+  <%= link_to "Payment #{payment.id}", [@loan, payment] %>
+  <div class="actions">
+    <%= link_to 'edit', edit_loan_payment_path(@loan, payment) %>
+    <%= link_to 'delete', [@loan, payment], method: :delete, remote: true %>
+  </div>
+<% end %>
