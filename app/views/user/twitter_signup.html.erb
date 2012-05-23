@@ -1,0 +1,10 @@
+<%= form_for(@user, :as => :user, :url => registration_path(:user)) do |f| %>
+  <%= hidden_field :user, :provider %>
+  <%= hidden_field :user, :password %>
+  <%= hidden_field :user, :password_confirmation %>
+  <%= hidden_field :user, :uid %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <br />
+  <%= f.submit "Sign up" %>
+<% end %>
