@@ -91,13 +91,12 @@ class LoansController < ApplicationController
     @loan = Loan.find(params[:loan_id])
     @month = params[:month].to_i
     @payday = params[:payday]
-    logger.info("Get the values")
 
     @dateparams = @payday.split("/")
-    logger.info("date divided, year: #{@dateparams[2]}, month:  #{@dateparams[1]}, day: #{@dateparams[0]}")
     firstday = Date.new(@dateparams[2].to_i, @dateparams[1].to_i, @dateparams[0].to_i)
 
     @loan.create_payments(@month, firstday)
+    LoanMailer.payment_plan(@loan).deliver
     redirect_to @loan, notice: "odeme plani bilgileri: #{@month} ay, #{@payday} ilk odemesi"
   end
 

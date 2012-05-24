@@ -1,0 +1,9 @@
+<p>Selamlar,</p>
+
+<p>Benden aldigin borcun vadelendirmesini su sekilde planladim.</p>
+
+<% @payments.each { |payment| %>
+  <p> <%= payment.payment_date %> tarihinde <%= payment.payment_value %>TL </p>
+<% } %>
+
+<p>bilgin olsun</p>

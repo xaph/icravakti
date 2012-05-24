@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Email</th>
     <th>Facebook name</th>
     <th>Twitter name</th>
     <th>Info</th>
@@ -14,6 +15,7 @@
 <% @borrowers.each do |borrower| %>
   <tr>
     <td><%= borrower.name %></td>
+    <td><%= borrower.email %></td>
     <td><%= borrower.facebook_name %></td>
     <td><%= borrower.twitter_name %></td>
     <td><%= borrower.info %></td>
