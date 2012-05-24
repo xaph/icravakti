@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Borrower:</b>
   <%= @loan.borrower.name %>
@@ -7,7 +5,7 @@
 
 <p>
   <b>Value:</b>
-  <%= @loan.value %>
+  <%= @loan.value %> (<%= @loan.paid_value %> lirasini odedi)
 </p>
 
 <p>
@@ -15,16 +13,17 @@
   <%= @loan.description %>
 </p>
 
-<p>
-  <b>Paid value:</b>
-  <%= @loan.paid_value %>
-</p>
-
-<%= link_to 'Edit', edit_loan_path(@loan) %> |
-<%= link_to 'Back', loans_path %>
-
 <br><br>
 
-<h4> payments</h4>
+<% if @loan.payments.count == 0 %> 
+  <div id="payment_box">
+    <%= render 'payment_plan' %>
+  </div> 
+<%= link_to 'Edit', edit_loan_path(@loan) %> |
+<% else %>
+<h4>Taksitler</h4>
 <%= render @loan.payments %>
-<%= link_to 'yeni bir odeme yap', new_loan_payment_path(@loan) %>
+<% end %>
+<%= link_to 'Back', loans_path %>
+
+<%= link_to 'Borcu kapat', loan_archive_path(@loan) %>

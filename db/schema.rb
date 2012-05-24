@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120523200738) do
+ActiveRecord::Schema.define(:version => 20120524031425) do
 
   create_table "borrowers", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120523200738) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "user_id"
+    t.string   "email"
   end
 
   create_table "loans", :force => true do |t|
@@ -29,8 +30,9 @@ ActiveRecord::Schema.define(:version => 20120523200738) do
     t.integer  "value"
     t.text     "description"
     t.integer  "paid_value",  :default => 0
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "archived",    :default => false
   end
 
   create_table "payments", :force => true do |t|

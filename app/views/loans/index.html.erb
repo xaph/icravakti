@@ -5,9 +5,9 @@
     <th>Borclu Arkadas</th>
     <th>Verilen para</th>
     <th>Aciklama</th>
-    <th></th>
-    <th></th>
-    <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
   </tr>
 
 <% @loans.each do |loan| %>
@@ -16,8 +16,10 @@
     <td><%= loan.value %>(<%= loan.paid_value %> lirasini odedi)</td>
     <td><%= loan.description %></td>
     <td><%= link_to 'Show', loan %></td>
-    <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
-    <td><%= link_to 'Destroy', loan, confirm: 'Are you sure?', method: :delete %></td>
+    <% if loan.archived == false %>
+      <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
+      <td><%= link_to 'Destroy', loan, confirm: 'Are you sure?', method: :delete %></td>
+    <% end %> 
   </tr>
 <% end %>
 </table>
@@ -25,3 +27,7 @@
 <br />
 
 <%= link_to 'New Loan', new_loan_path %>
+
+<br>
+<br>
+<%= link_to 'odenmis borclari goruntule', 'loans?completed=show' %>

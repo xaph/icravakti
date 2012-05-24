@@ -2,7 +2,12 @@ class LoansController < ApplicationController
   # GET /loans
   # GET /loans.json
   def index
-    @loans = current_user.loans
+    @completed = params[:completed]
+    if @completed == "show"
+      @loans = current_user.loans.where(:archived => true)
+    else
+      @loans = current_user.loans.where(:archived => false)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,6 +84,32 @@ class LoansController < ApplicationController
     respond_to do |format|
       format.html { redirect_to loans_url }
       format.json { head :no_content }
+    end
+  end
+
+  def create_payment_plan
+    @loan = Loan.find(params[:loan_id])
+    @month = params[:month].to_i
+    @payday = params[:payday]
+    logger.info("Get the values")
+
+    @dateparams = @payday.split("/")
+    logger.info("date divided, year: #{@dateparams[2]}, month:  #{@dateparams[1]}, day: #{@dateparams[0]}")
+    firstday = Date.new(@dateparams[2].to_i, @dateparams[1].to_i, @dateparams[0].to_i)
+
+    @loan.create_payments(@month, firstday)
+    redirect_to @loan, notice: "odeme plani bilgileri: #{@month} ay, #{@payday} ilk odemesi"
+  end
+
+  def archive
+    @loan = Loan.find(params[:loan_id])
+
+    if @loan.payments.count > 0 && @loan.remaining < 10 #10 must fixed, payment calculation based on integers...
+      @loan.archived = true
+      @loan.save
+      redirect_to loans_path, notice: "borcu kapattiniz, gozunuz aydin :)"
+    else
+      redirect_to @loan, alert: "borcu kapatabilmeniz icin tum taksitlerin odenmesi gerekmektedir. Taksitlendirme yapmadiysaniz odeme plani olusturunuz"
     end
   end
 end

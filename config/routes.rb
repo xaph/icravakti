@@ -2,7 +2,11 @@ Icravakti::Application.routes.draw do
   resources :borrowers
 
   resources :loans do
-    resources :payments
+    resources :payments do
+      get 'toggle_paid'
+    end
+    post 'create_payment_plan'
+    get 'archive'
   end
 
   get "user/show"

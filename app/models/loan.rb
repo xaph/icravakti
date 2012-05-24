@@ -21,6 +21,17 @@ class Loan < ActiveRecord::Base
     self.save
   end
 
+  def create_payments(month, payday)
+    month.times {
+      payment = Payment.new
+      payment.payment_value = self.value/month
+      payment.payment_date = payday
+      payment.loan = self
+      payment.save
+      payday = payday.next_month
+    }
+  end
+
   def remaining
     value - paid_value
   end

@@ -1,0 +1,8 @@
+<%= form_tag(loan_create_payment_plan_path(@loan)) do %>
+  <%= label_tag "Taksit Sayisi" %>
+  <%= select_tag :month, options_for_select((1..12).to_a), :include_blank => false %>
+  <%= label_tag "ilk odeme gunu" %>
+  <%= text_field_tag :payday %>
+  
+  <%= submit_tag("Odeme plani olustur") %>
+<% end %>

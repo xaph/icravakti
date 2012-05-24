@@ -1,7 +1,11 @@
 <%= div_for payment do %>
-  <%= link_to "Payment #{payment.id}", [@loan, payment] %>
-  <div class="actions">
-    <%= link_to 'edit', edit_loan_payment_path(@loan, payment) %>
-    <%= link_to 'delete', [@loan, payment], method: :delete, remote: true %>
-  </div>
+  <p> <%= "Payment #{payment.id}" %> </p>
+  <p> <%= payment.payment_value %>TL </p>
+  <p> <%= payment.payment_date %> </p>
+  <%  if payment.paid %>
+    <p> <%= link_to "Odemeyi iptal et", loan_payment_toggle_paid_path(@loan, payment) %> </p>
+  <% else %>
+    <p> <%= link_to "Odemeyi onayla", loan_payment_toggle_paid_path(@loan, payment) %> </p>
+  <% end %>
 <% end %>
+<div class="clearfix"></div>

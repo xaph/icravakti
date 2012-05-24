@@ -8,9 +8,7 @@ class Payment < ActiveRecord::Base
 
   private
   def update_loan_value
-    if self.paid
-      @loan = self.loan
-      @loan.update_paid
-    end
+    @loan = self.loan
+    @loan.update_paid
   end
 end

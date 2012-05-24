@@ -81,7 +81,19 @@ class PaymentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to loan_payments_url(@loan) }
       format.json { head :no_content }
+      format.js
     end
+  end
+
+  def toggle_paid
+    @payment = @loan.payments.find(params[:payment_id])
+    if @payment.paid
+      @payment.paid = false
+    else
+      @payment.paid = true
+    end
+    @payment.save
+    redirect_to @loan, notice: "odeme basariyla guncellendi"
   end
 
   def get_loan
